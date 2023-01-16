@@ -1,0 +1,17 @@
+class OrderedStream {
+    int ptr = 0;
+    String[] s;
+    public OrderedStream(int n) {
+      s = new String[n];  
+    }
+    
+    public List<String> insert(int idKey, String value) {
+        List<String> list = new ArrayList();
+        s[idKey-1] = value;
+        while(ptr < s.length && s[ptr] != null){
+            list.add(s[ptr]);
+            ptr++;
+        }
+        return list;
+    }
+}
