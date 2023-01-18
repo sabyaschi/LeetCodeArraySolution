@@ -1,0 +1,14 @@
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        HashSet<String> set = new HashSet();// it will store the unique String after concatenation
+        String[] M = new String[]{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        for(String s : words){
+            StringBuilder sb = new StringBuilder();//It will help to append the morese code character with other character
+            for(char c : s.toCharArray()){
+                sb.append(M[c-'a']);
+            }
+            set.add(sb.toString());
+        }
+        return set.size();//after add into hash set it will give only the size of unique strings
+    }
+}
