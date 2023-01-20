@@ -1,0 +1,10 @@
+class Solution {
+    public int maxProductDifference(int[] nums) {
+        int ans = 0;
+        Arrays.sort(nums);
+        int s = 0;
+        int e = nums.length;
+        ans = (nums[e-1]*nums[e-2]) - (nums[s+1]*nums[s]);
+        return ans;
+    }
+}
