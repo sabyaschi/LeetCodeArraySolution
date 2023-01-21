@@ -1,0 +1,12 @@
+class Solution {
+    public int ans(int nums[],int lvl,int xOR){
+        if(nums.length==lvl)
+        return xOR;
+        int inc = ans(nums,lvl+1,nums[lvl]^xOR);
+        int exc = ans(nums,lvl+1,xOR);
+        return inc + exc;
+    }
+    public int subsetXORSum(int[] nums) {
+        return ans(nums,0,0);
+    }
+}
