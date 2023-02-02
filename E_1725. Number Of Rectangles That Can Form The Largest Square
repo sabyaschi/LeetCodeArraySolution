@@ -1,0 +1,21 @@
+class Solution {
+    public int countGoodRectangles(int[][] rectangles) {
+        int ans=0;
+        int mx = 0;
+        for(int[] rec : rectangles){
+            int l = rec[0];
+            int w = rec[1];
+            int len = Math.min(l,w);
+            mx = Math.max(mx,len);
+        }
+        for(int[] rec : rectangles){
+            int l = rec[0];
+            int w = rec[1];
+            int len = Math.min(l,w);
+            if(len==mx){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
