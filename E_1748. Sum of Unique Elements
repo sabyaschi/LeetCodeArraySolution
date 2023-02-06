@@ -1,0 +1,24 @@
+class Solution {
+    public static boolean check_num(int n,int[] a){
+        int c = 0;
+        for(int i:a){
+            if(i==n){
+                c++;
+            }
+            if(c>1){
+                return false;
+            }
+        }
+        return true;
+    }
+    public int sumOfUnique(int[] nums) {
+         int ans = 0;
+         for(int i : nums){
+             boolean check = check_num(i,nums);
+             if(check){
+                 ans+= i;
+             }
+         }
+         return ans;
+    }
+}
