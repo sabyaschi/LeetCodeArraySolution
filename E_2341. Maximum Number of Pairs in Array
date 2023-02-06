@@ -1,0 +1,16 @@
+class Solution {
+    public int[] numberOfPairs(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        int ans[] = new int[2];
+        int c = 0;
+        for(int i : nums){
+            if(!set.add(i)){
+                c++;
+                set.remove(i);
+            }
+        }
+        ans[0] = c;
+        ans[1] = set.size();
+        return ans;
+    }
+}
