@@ -1,0 +1,19 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int s = 0;
+        int e = nums.length - 1;
+        while(s<e){
+            while(s<e && nums[s] % 2 == 0){
+            s++;
+            }
+        while(s<e && nums[e] % 2 == 1){
+            e--;
+            }
+            int tmp = nums[s];
+            nums[s] = nums[e];
+            nums[e] = tmp;
+        }      
+
+        return nums;
+    }
+}
