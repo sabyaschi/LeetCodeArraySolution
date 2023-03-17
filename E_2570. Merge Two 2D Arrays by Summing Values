@@ -1,0 +1,29 @@
+class Solution {
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+        HashMap<Integer,Integer> mp = new HashMap<>();
+
+        for(int i[] : nums1){
+            mp.put(i[0],i[1]);
+        }
+
+        for(int i[] : nums2){
+            if(mp.containsKey(i[0])){
+                mp.put(i[0],i[1] + mp.get(i[0]));
+            }
+            else{
+                mp.put(i[0],i[1]);
+            }
+        }
+
+        int [][] ans = new int [mp.size()][2];
+        int a = 0;
+
+        for(int k : mp.keySet()){
+            ans[a][0] = k;
+            ans[a][1] = mp.get(k);
+            a++; 
+        }
+        Arrays.sort(ans, (c,b) -> c[0] - b[0]);
+        return ans;
+    }
+}
