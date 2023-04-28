@@ -1,0 +1,28 @@
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        int[] ans = new int[nums.length];
+        int index = 0;
+
+        for(int i : nums){
+            if(pivot>i){
+                ans[index++] = i;
+            }
+
+        }
+
+        for(int i : nums){
+            if(pivot==i){
+                ans[index++] = i;
+            }
+            
+        }
+
+        for(int i : nums){
+            if(pivot<i){
+                ans[index++] = i;
+            }
+            
+        }
+        return ans;
+    }
+}
