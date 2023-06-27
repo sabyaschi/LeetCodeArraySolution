@@ -1,0 +1,21 @@
+class Solution {
+    public int[] maxSubsequence(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        List<Integer> li = new ArrayList<>();
+        int ans[] = new int[k];
+//Add elements into list for maintain the order and add into queue for making a sequence from lowest value to heights
+        for(int i : nums){
+            pq.add(i);
+            li.add(i);
+        }
+//Removing the elements lowest sum value , approach total length of nums - length of K 
+        for(int i=0;i<nums.length-k;i++){
+            li.remove(pq.remove());
+        }
+//After removing the elements from our list print the values which is currently present into our list for maintaining the order of sequence as well as largest sum of length of k.
+        for(int i=0;i<k;i++){
+            ans[i] = li.get(i);
+        }
+        return ans;
+    }
+}
