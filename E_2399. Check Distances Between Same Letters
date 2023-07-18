@@ -1,0 +1,17 @@
+class Solution {
+    public boolean checkDistances(String s, int[] distance) {
+        for(int i = 0;i<s.length();i++){
+            char cur_char = s.charAt(i);
+            int first_occurence = s.indexOf(cur_char);
+            int last_occurence = s.lastIndexOf(cur_char);
+            int dist = last_occurence - first_occurence - 1;
+            if(distance[cur_char - 'a'] == dist){
+                continue;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+}
