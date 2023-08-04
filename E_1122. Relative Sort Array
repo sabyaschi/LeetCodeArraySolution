@@ -1,0 +1,30 @@
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        TreeMap<Integer , Integer> mp = new TreeMap<>();
+
+        for(int i : arr1){
+            mp.put(i, mp.getOrDefault(i,0) + 1);
+        }
+
+        int ans[] = new int[arr1.length];
+        int idx = 0;
+
+        for(int i : arr2){
+            while(mp.get(i) != 0){
+                ans[idx++] = i;
+                mp.put(i,mp.get(i) - 1);
+            }
+        }
+
+        while(mp.size() > 0){
+            int key = mp.firstKey();
+            int count = mp.remove(key);
+            for(int i = 0;i<count;i++){
+                ans[idx++] = key;
+            }
+        }
+
+        return ans;
+
+    }
+}
