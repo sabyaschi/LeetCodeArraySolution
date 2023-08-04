@@ -1,0 +1,17 @@
+class Solution {
+    public long findTheArrayConcVal(int[] nums) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        long t = 0;
+
+        while(l < r){
+            String tmp = String.valueOf(nums[l]) + String.valueOf(nums[r]);
+            t += Long.parseLong(tmp);
+            l++;
+            r--;
+        }
+
+        return (nums.length % 2 == 0) ? t : t + Long.valueOf(nums[l]) ;
+    }
+}
