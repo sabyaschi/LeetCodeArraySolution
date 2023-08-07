@@ -1,0 +1,33 @@
+class Solution {
+    public List<String> commonChars(String[] words) {
+        List<String> ans = new ArrayList<>();
+        List<HashMap<Character,Integer>> ls = new ArrayList<>();
+
+        for(String s : words){
+            HashMap<Character,Integer> mp = new HashMap<>();
+
+            for(char ch : s.toCharArray()){
+                mp.put(ch,mp.getOrDefault(ch, 0) + 1);
+            }
+
+            ls.add(mp);
+        }
+
+        for(char ch : ls.get(0).keySet()){
+            int min = Integer.MAX_VALUE;
+
+            for(HashMap<Character,Integer> mp : ls){
+                if(!mp.containsKey(ch)){
+                    min = 0;
+                    break;
+                }
+                min = Math.min(min,mp.get(ch));
+            }
+
+            for(int i = 0;i<min;i++){
+                ans.add(String.valueOf(ch));
+            }
+        }
+        return ans;
+    }
+}
