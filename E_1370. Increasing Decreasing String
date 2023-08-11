@@ -1,0 +1,31 @@
+class Solution {
+    public String sortString(String s) {
+        int ap[] = new int[26];
+        for(int i = 0;i<s.length();i++){
+            ap[s.charAt(i) - 'a']++;
+        }
+        StringBuilder sb = new StringBuilder();
+        int count = s.length();
+
+        while(count > 0){
+            for(int i = 0;i<ap.length;i++){
+                if(ap[i] != 0){
+                    sb.append((char)(i+97));
+                    ap[i]--;
+                    count--;
+                    }
+                
+                }
+           
+            for(int i = ap.length-1;i>=0;i--){
+                 if(ap[i] != 0){
+                    sb.append((char)(i+97));
+                    ap[i]--;
+                    count--;
+                    }
+                
+                }
+            }
+        return sb.toString();
+    }
+}
