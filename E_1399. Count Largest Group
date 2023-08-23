@@ -1,0 +1,25 @@
+class Solution {
+    public int countLargestGroup(int n) {
+        int arr[] = new int[37];
+        int max = 0;
+        for(int i = 1;i<=n;i++){
+            max = Math.max(max,++arr[sum_dig(i)]);
+        }
+        int tmp = 0;
+        for(int i = 0;i < arr.length;i++){
+            if(max == arr[i]){
+                tmp++;
+            }
+        }
+        return tmp;
+
+    }
+    int sum_dig(int a){
+        int sum = 0;
+        while(a != 0){
+             sum += a % 10;
+             a /= 10;
+        }
+        return sum;
+    }
+}
