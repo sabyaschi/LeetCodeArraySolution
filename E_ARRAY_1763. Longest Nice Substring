@@ -1,0 +1,39 @@
+class Solution {
+    public String longestNiceSubstring(String s) {
+        String tmp = "";
+        for(int i=0;i<s.length();i++){
+            for(int j = i;j<s.length();j++){
+                String sub = s.substring(i,j+1);
+                if(newFunc(sub)){
+                    if(sub.length()>tmp.length()){
+                        tmp = sub;
+                    }
+                }
+            }
+        }
+        return tmp;
+    }
+
+    public boolean newFunc(String s){
+        int chr[] = new int[128];
+        Arrays.fill(chr,0);
+        for(char ch : s.toCharArray()){
+            int idx = (int)ch;
+            chr[idx]++;
+        }
+
+        for(int i = 0;i<s.length();i++){
+            if(Character.isUpperCase(s.charAt(i))){
+                if(chr[(int)s.charAt(i) + 32] == 0){
+                    return false;
+                }
+            }
+            else{
+                if(chr[(int)s.charAt(i) - 32] == 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    } 
+}
