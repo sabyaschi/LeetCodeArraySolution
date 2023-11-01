@@ -1,0 +1,10 @@
+class Solution {
+    public int[] findArray(int[] pref) {
+        int prefSum = pref[0];
+        for(int i = 1; i < pref.length; i++){
+            pref[i] ^= prefSum;
+            prefSum ^= pref[i];
+        }
+        return pref;
+    }
+}
