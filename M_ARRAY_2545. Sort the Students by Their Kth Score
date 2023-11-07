@@ -1,0 +1,6 @@
+class Solution {
+    public int[][] sortTheStudents(int[][] score, int k) {
+        Arrays.sort(score , (r1,r2) -> Integer.compare(r2[k],r1[k]));
+        return score;
+    }
+}
