@@ -1,0 +1,24 @@
+class Solution {
+    public int[] countPoints(int[][] points, int[][] queries) {
+        int ans[] = new int[queries.length];
+        int i = 0;
+        for(int q[] : queries){
+            int x = q[0];
+            int y = q[1];
+            int z = q[2];
+            int count = 0;
+            for(int p[] : points){
+                if(isTrue(x,y,z,p)){
+                    count++;
+                }
+            }
+            ans[i++] = count;
+        }
+        return ans;
+    }
+    public boolean isTrue(int x , int y , int z , int[]p){
+        int x1 = p[0];
+        int y1 = p[1];
+        return (int)Math.pow(Math.abs(x-x1),2) + (int)Math.pow(Math.abs(y-y1),2) <= (int)Math.pow(z,2);
+    }
+}
