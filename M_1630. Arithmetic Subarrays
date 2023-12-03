@@ -1,0 +1,36 @@
+class Solution {
+    public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+        List<Boolean> li = new ArrayList<>();
+        for(int i = 0 ; i < l.length; i++){
+            int tmp[] = new int[(r[i] - l[i]) + 1];
+            int idx = 0;
+            for(int j = l[i]; j <= r[i]; j++){
+                tmp[idx++] = nums[j];
+            }
+            Arrays.sort(tmp);
+            boolean con = false;
+            if(tmp.length < 3){
+                li.add(true);
+            }
+            else{
+                for(int k = 0;k < tmp.length - 2;k++){
+                    if((tmp[k+1] - tmp[k]) == (tmp[k+2] - tmp[k+1])){
+                    con = true;
+                    }
+                    else{
+                        con = false;
+                        break;
+                    }
+                }
+                if(con == true){
+                li.add(true);
+                }
+                else{
+                li.add(false);
+                }
+            }
+            
+        }
+        return li;
+    }
+}
