@@ -1,0 +1,18 @@
+class Solution {
+    public int[] processQueries(int[] queries, int m) {
+       int ans[] = new int[queries.length];
+       LinkedList<Integer> ll = new LinkedList<>();
+       for(int i = 1; i <= m; i++){
+           ll.add(i);
+       }
+       int idx = 0;
+       for(int i : queries){
+           int index = ll.indexOf(i);
+           int idx_ele = ll.get(index);
+           ll.remove(index);
+           ll.addFirst(idx_ele);
+           ans[idx++] = index; 
+       }
+       return ans;   
+    }
+}
