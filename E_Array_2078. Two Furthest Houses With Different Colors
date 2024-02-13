@@ -1,0 +1,21 @@
+class Solution {
+    public int maxDistance(int[] colors) {
+        int ln = colors.length;
+        int start = 0;
+        int end = ln - 1;
+        int ans = 0;
+
+        while(start < end){
+            if(colors[start] == colors[end]){
+                end--;
+            }
+            else{
+                ans = Math.max(ans,end-start);
+                start++;
+                end = ln - 1;
+            }
+            
+        }
+        return ans;
+    }
+}
