@@ -1,0 +1,39 @@
+class Solution {
+    public int[][] diagonalSort(int[][] mat) {
+        int arr[][]  = new int[mat.length][mat[0].length];
+        for(int i = 0;i < mat[0].length;i++){
+            int idx1 = 0;
+            int idx2 = i;
+            ArrayList<Integer> ls = new ArrayList<>();
+            while(idx1 < mat.length && idx2 < mat[0].length){
+                ls.add(mat[idx1][idx2]);
+                idx1++;idx2++;
+            }
+            Collections.sort(ls);
+            idx1 = 0;
+            idx2 = i;
+            while(idx1 < mat.length && idx2 < mat[0].length){
+                arr[idx1][idx2] = ls.get(idx1);
+                idx1++;idx2++;
+            }
+        }
+
+         for(int i = 0;i < mat.length;i++){
+            int idx1 = i;
+            int idx2 = 0;
+            ArrayList<Integer> ls = new ArrayList<>();
+            while(idx1 < mat.length && idx2 < mat[0].length){
+                ls.add(mat[idx1][idx2]);
+                idx1++;idx2++;
+            }
+            Collections.sort(ls);
+            idx1 = i;
+            idx2 = 0;
+            while(idx1 < mat.length && idx2 < mat[0].length){
+                arr[idx1][idx2] = ls.get(idx2);
+                idx1++;idx2++;
+            }
+        }
+        return arr;
+    }
+}
