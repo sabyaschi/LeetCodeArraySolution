@@ -1,0 +1,35 @@
+class Solution {
+    public int[] resultArray(int[] nums) {
+        if(nums.length < 2){
+            return new int[0];
+        }
+        int l = nums.length;
+        int a1[] = new int[l];
+        int a2[] = new int[l];
+        int i = 0;
+        int j = 0;
+        if(nums[0] > nums[1]){
+            a1[i++] = nums[0];
+            a2[j++] = nums[1];
+        }
+        else {
+            a1[i++] = nums[0];
+            a2[j++] = nums[1];
+        }
+        
+        for(int k = 2;k < l;k++){
+            if(a1[i - 1] > a2[j - 1]){
+                a1[i++] = nums[k];
+            }
+            else{
+                a2[j++] = nums[k];
+            }
+        }
+        int idx = 0;
+        for(int q = i;q < l;q++){
+            a1[q] = a2[idx];
+            idx++;
+        }
+        return a1;
+    }
+}
