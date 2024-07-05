@@ -1,0 +1,19 @@
+class Solution {
+    public int[] numberOfLines(int[] widths, String s) {
+        int result[] = new int[2];
+        int total = 0;
+        int count = 1;
+        for(char c : s.toCharArray()){
+            int ch = (int) c;
+            int sp = widths[ch - 97];
+            if(total + sp > 100){
+                count++;
+                total = 0;
+            }
+            total += sp;
+        }
+        result[0] = count;
+        result[1] = total;
+        return result ;
+    }
+}
