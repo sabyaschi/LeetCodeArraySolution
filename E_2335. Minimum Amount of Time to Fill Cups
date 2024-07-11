@@ -1,0 +1,18 @@
+class Solution {
+    public int fillCups(int[] amount) {
+        int ans = 0;
+        Arrays.sort(amount);
+        while(amount[amount.length - 1] > 0 && amount[amount.length - 2] > 0){
+            amount[amount.length - 1]--;
+            amount[amount.length - 2]--;
+            ans++;
+            Arrays.sort(amount);
+        }
+
+        while(amount[amount.length - 1] > 0){
+            amount[amount.length - 1]--;
+            ans++;
+        }
+        return ans;
+    }
+}
