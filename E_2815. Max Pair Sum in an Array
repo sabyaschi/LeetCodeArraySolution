@@ -1,0 +1,39 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        int max[] = new int[nums.length];
+        int ans = 0;
+        int p = 0;
+        for(int i = 0;i < nums.length;i++){
+            int num = nums[i];
+            int tmpNum = findMax(num);
+            max[p++] = tmpNum;
+        }
+        int flag = 0;
+        int ansMax = Integer.MIN_VALUE;
+        for(int i = 0;i < nums.length-1;i++){
+            for(int j = i+1;j < nums.length;j++){
+                if(max[i] == max[j]){
+                    int sum = nums[i] + nums[j];
+                    ansMax = Math.max(ansMax , sum);
+                    flag++;
+                }
+            }
+        }
+        if(flag != 0){
+            ans  = ansMax;
+        }
+        else{
+            return -1;
+        }
+        return ans;
+    }
+    public int findMax(int a){
+        int max = Integer.MIN_VALUE;
+        while(a > 0){
+            int rem = a % 10;
+            max = Math.max(max,rem);
+            a = a /10;
+        }
+        return max;
+    }
+}
