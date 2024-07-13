@@ -1,0 +1,43 @@
+//Runtime 24ms
+class Solution {
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String> ls = new ArrayList<>();
+        for(int i = 0;i < words.size();i++){
+            String s[] = words.get(i).split("["+separator+"]");
+            for(int j = 0;j < s.length;j++){
+                if(s[j].length() > 0){
+                    ls.add(s[j]);
+                }
+            }
+        }
+        return ls;
+    }
+}
+
+//Runtime 6ms
+
+class Solution {
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String> ls = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+
+        for(String s : words){
+            for(int i = 0;i < s.length();i++){
+                if(s.charAt(i) == separator){
+                    if(sb.length() > 0){
+                        ls.add(sb.toString());
+                        sb.setLength(0);
+                    }
+                }
+                else{
+                    sb.append(s.charAt(i));
+                }
+            }
+            if(sb.length() > 0){
+                ls.add(sb.toString());
+                sb.setLength(0);
+            }
+        }
+        return ls;
+    }
+}
