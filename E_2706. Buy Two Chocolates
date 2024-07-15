@@ -1,0 +1,46 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        int ans  = money;
+        int temp = ans;
+        int count1 = 0;
+        int count2 = 0;
+        Arrays.sort(prices);
+        for(int i = prices.length - 1; i >= 0; i--){
+            if(money >= prices[i]){
+                if(count1 < 2){
+                    money = money - prices[i];
+                    count1++;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        for(int i = 0; i < prices.length; i++){
+            if(ans >= prices[i]){
+                if(count2 < 2){
+                    ans = ans - prices[i];
+                    count2++;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        if(count1 == 2 && count2 != 2){
+            return money;
+        }
+        if(count2 == 2 && count1 != 2){
+            return ans;
+        }
+        if(count1 == 2 && count2 == 2){
+            if(ans > money){
+                return ans;
+            }
+            else{
+                return money;
+            }
+        }
+        return temp;
+    }
+}
