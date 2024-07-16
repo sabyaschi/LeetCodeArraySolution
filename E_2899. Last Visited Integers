@@ -1,0 +1,33 @@
+class Solution {
+    public List<Integer> lastVisitedIntegers(int[] nums) {
+        List<Integer> seen = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+        int k = 0;
+        int idx = 0;
+        for(int i = 0;i < nums.length;i++){
+            if(nums[i] > -1){
+                seen.add(idx,nums[i]);
+            }
+            else if(nums[i] == -1){
+                if(i == 0){
+                    k++;
+                    ans.add(nums[i]);
+                }
+                else if(nums[i - 1] == -1){
+                    k++;
+                    if(k > seen.size()){
+                        ans.add(nums[i]);
+                    }
+                    else if(k <= seen.size()){
+                        ans.add(seen.get(k-1));
+                    }
+                }
+                else{
+                    k = 1;
+                    ans.add(seen.get(k-1));
+                }
+            }
+        }
+        return ans;
+    }
+}
