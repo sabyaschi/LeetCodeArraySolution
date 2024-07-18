@@ -1,0 +1,15 @@
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int max = 0;
+        for(int a : arr1){
+            for(int b : arr2){
+                int tmp = a - b;
+                if(Math.abs(tmp) <= d){
+                    max++;
+                    break;
+                }
+            }
+        }
+        return arr1.length - max;
+    }
+}
