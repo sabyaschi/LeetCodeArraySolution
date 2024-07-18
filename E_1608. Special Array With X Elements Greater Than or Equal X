@@ -1,0 +1,16 @@
+class Solution {
+    public int specialArray(int[] nums) {
+        int arr[] = new int[1001];
+        for(int i : nums){
+            arr[i]++;
+        } 
+        int sum = nums.length;
+        for(int i = 0;i < arr.length;i++){
+            if(i == sum){
+                return i;
+            }
+            sum -= arr[i];
+        }
+        return -1;
+    }
+}
