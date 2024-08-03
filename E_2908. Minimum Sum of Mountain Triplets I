@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumSum(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int count = -1;
+        int len = nums.length;
+        for (int i = 0; i < len - 2; i++) {
+            for (int j = i + 1; j < len - 1; j++) {
+                for (int k = j + 1; k < len; k++) {
+                    if (nums[i] < nums[j] && nums[k] < nums[j]) {
+                        int sum = nums[i] + nums[j] + nums[k];
+                        min = Math.min(min, sum);
+                        count++;
+                    }
+                }
+            }
+        }
+        return count == -1? -1 : min;
+    }
+}
