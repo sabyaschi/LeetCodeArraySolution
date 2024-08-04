@@ -1,0 +1,42 @@
+class Solution {
+    public int[] sortEvenOdd(int[] nums) {
+        int len = nums.length;
+        // int oddLen = 0;
+        // int eveLen = 0;
+        // if(len % 2 == 0){
+        // oddLen = len / 2;
+        // eveLen = len / 2;
+        // }
+        // else{
+        // oddLen = len / 2;
+        // eveLen = (len / 2) + 1;
+        // }
+        // int odd[] = new int [oddlen];
+        // int even[] = new int[eveLen];
+        // int idx1 = 0;
+        // int idx2 = 0;
+        ArrayList<Integer> odd = new ArrayList<>();
+        ArrayList<Integer> even = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            if (i % 2 == 0) {
+                even.add(nums[i]);
+            } else {
+                odd.add(nums[i]);
+            }
+        }
+        Collections.sort(odd);
+        Collections.sort(even);
+        int idx = 0;
+        int idx1 = odd.size() - 1;
+        for (int i = 0; i < len; i++) {
+            if (i % 2 == 0) {
+                nums[i] = even.get(idx);
+                idx++;
+            } else {
+                nums[i] = odd.get(idx1);
+                idx1--;
+            }
+        }
+        return nums;
+    }
+}
