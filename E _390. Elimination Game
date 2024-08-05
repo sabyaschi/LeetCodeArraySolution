@@ -1,0 +1,34 @@
+class Solution {
+    // public static int checkNum(ArrayList<Integer> ls, int count) {
+    //     int len = ls.size();
+    //     ArrayList<Integer> ls1 = new ArrayList<>();
+    //     if (len == 1) {
+    //         return ls.get(0);
+    //     }
+    //     if (count % 2 == 0) {
+    //         for (int i = 1; i < len; i = i + 2) {
+    //             ls1.add(ls.get(i));
+    //         }
+    //     } else {
+    //         for (int i = len - 2; i >=0; i = i - 2) {
+    //             ls1.add(0 , ls.get(i));
+    //         }
+    //     }
+    //     return checkNum(ls1, ++count);
+    // }
+
+    public int lastRemaining(int n) {
+        if (n == 1 || n == 0) {
+            return n;
+        }
+        // ArrayList<Integer> ls = new ArrayList<>();
+        // for (int i = 1; i <= n; i++) {
+        //     ls.add(i);
+        // }
+        // int count = 0;
+        // int res = checkNum(ls, count);
+        // return res;
+        int tmp = lastRemaining(n / 2);
+        return 2 * (((n / 2) + 1) - tmp);
+    }
+}
