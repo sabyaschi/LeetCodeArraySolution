@@ -1,0 +1,19 @@
+class Solution {
+    public int[][] construct2DArray(int[] original, int m, int n) {
+        int arr[][] = new int[m][n];
+        int len = original.length;
+        int a = 0, b = 0;
+        if(len < m*n || len > m*n){
+            return new int[][]{};
+        }
+        for(int i = 0;i < len; i++){
+            if(n == b){
+                a++;
+                b = 0;
+            }
+            arr[a][b] = original[i];
+            b++;
+        }
+        return arr;
+    }
+}
