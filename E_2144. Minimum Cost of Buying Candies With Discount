@@ -1,0 +1,23 @@
+class Solution {
+    public int minimumCost(int[] cost) {
+        Arrays.sort(cost);
+        int sum = 0;
+        int len = cost.length;
+        int rem = len % 3;
+        int res = len / 3;
+        if (res > 0) {
+            int i = len - 1;
+            while (res > 0) {
+                sum += cost[i] + cost[i - 1];
+                i = i - 3;
+                res--;
+            }
+        }
+        if (rem > 0) {
+            for (int i = 0; i < rem; i++) {
+                sum += cost[i];
+            }
+        }
+        return sum;
+    }
+}
