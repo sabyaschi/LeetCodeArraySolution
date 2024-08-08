@@ -1,0 +1,22 @@
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        int len = logs.length;
+        int arr[] = new int[101];
+        for(int i = 0; i < len;i++){
+            for(int j = logs[i][0];j < logs[i][1];j++){
+                int date = j - 1950;
+                arr[date]++;
+            }
+            logs[i][1]--;
+        }
+        int date = 1950;
+        int maxPop = Integer.MIN_VALUE;
+        for(int i = 0;i < 101;i++){
+            if(maxPop < arr[i]){
+                maxPop = arr[i];
+                date = 1950 + i;
+            }           
+        }
+        return date;
+    }
+}
