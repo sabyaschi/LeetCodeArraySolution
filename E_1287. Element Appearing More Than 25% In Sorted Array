@@ -1,0 +1,19 @@
+class Solution {
+    public int findSpecialInteger(int[] arr) {
+        HashMap<Integer , Integer> mp = new HashMap<>();
+        int res = 0;
+        int store = 0;
+        int len = arr.length;
+        for(int i : arr){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+        for(int i : mp.keySet()){
+            int num = mp.get(i);
+            if(store < num){
+                store = num;
+                res = i;
+            }
+        }
+        return res;
+    }
+}
