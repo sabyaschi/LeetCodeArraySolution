@@ -1,0 +1,23 @@
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        int p = k;
+        ArrayList<Integer> ls = new ArrayList<>();
+        ArrayList<Integer> ls1 = new ArrayList<>();
+        for (int i : arr) {
+            ls.add(i);
+        }
+        int count = 0, ans = 0;
+        int i = 1;
+        while (k > 0) {
+            if (ls.contains(i)) {
+                i++;
+                continue;
+            } else {
+                ls1.add(i);
+                k--;
+                i++;
+            }
+        }
+        return ls1.get(p - 1);
+    }
+}
