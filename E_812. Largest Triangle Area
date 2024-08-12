@@ -1,0 +1,23 @@
+class Solution {
+    public double largestTriangleArea(int[][] points) {
+        int len = points.length;
+        double sum = 0.00000;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                for (int k = j + 1; k < len; k++) {
+                    sum = Math.max(sum, Math.abs(findArea(points[i], points[j], points[k])));
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    public static double findArea(int a1[], int a2[], int a3[]) {
+        int a = a1[0] * (a2[1] - a3[1]);
+        int b = a2[0] * (a3[1] - a1[1]);
+        int c = a3[0] * (a1[1] - a2[1]);
+
+        return (double) (a + b + c) / 2;
+    }
+}
