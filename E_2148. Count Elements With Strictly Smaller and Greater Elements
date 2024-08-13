@@ -1,0 +1,15 @@
+class Solution {
+    public int countElements(int[] nums) {
+        Arrays.sort(nums);
+        int len = nums.length;
+        int low = nums[0];
+        int high = nums[len - 1];
+        int count = 0;
+        for (int i = 1; i < len - 1; i++) {
+            if (nums[i] > low && nums[i] < high) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
