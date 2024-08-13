@@ -1,0 +1,25 @@
+class Solution {
+    public int minOperations(List<Integer> nums, int k) {
+        List<Integer> ls = new ArrayList<>();
+        for (int i = 1; i <= k; i++) {
+            ls.add(i);
+        }
+        int len = ls.size();
+        int count = 0;
+        int l = nums.size();
+        for (int i = l - 1; i >= 0; i--) {
+            if (len > 0) {
+                if (ls.contains(nums.get(i))) {
+                    ls.remove(nums.get(i));
+                    len = ls.size();
+                    count++;
+                } else {
+                    count++;
+                }
+            } else {
+                break;
+            }
+        }
+        return count;
+    }
+}
