@@ -1,0 +1,73 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
+ * }
+ */
+class Solution {
+    public TreeNode createBinaryTree(int[][] descriptions) {
+        // HashSet<Integer> root = new HashSet<>();
+        // HashSet<Integer> child = new HashSet<>();
+        // Map<Integer, List<int[]>> mp = new HashMap<>();
+        // for (int i[] : descriptions) {
+        //     child.add(i[1]);
+        //     root.remove(i[1]);
+        //     if (!child.contains(i[0])) {
+        //         root.add(i[0]);
+        //     }
+
+        //     List<int[]> ls = mp.getOrDefault(i[0], new ArrayList<>());
+        //     ls.add(new int[] { i[1], i[2] });
+        //     mp.put(i[0], ls);
+
+        // }
+        // return ans(root.iterator().next(), mp);
+        HashMap<Integer,TreeNode> mp = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        for(int i[] : descriptions){
+            int parent = i[0];
+            int child = i[1];
+            int checkChild = i[2];
+            set.add(child);
+            TreeNode node = mp.getOrDefault(parent,new TreeNode(parent));
+            if(checkChild == 1){
+                node.left = mp.getOrDefault(child,new TreeNode(child));
+                mp.put(child,node.left);
+            }
+            else{
+                 node.right = mp.getOrDefault(child,new TreeNode(child));
+                 mp.put(child,node.right);
+            }
+            mp.put(parent,node);
+        }
+        int root = -1;
+        for(int i[] : descriptions){
+            if(!set.contains(i[0])){
+                root = i[0];
+                break;
+            }
+        }
+        return mp.getOrDefault(root,null);
+    }
+
+    // private TreeNode ans(int root, Map<Integer, List<int[]>> mp) {
+    // TreeNode node = new TreeNode(root);
+    // for (int[] ls : mp.getOrDefault(root, new ArrayList<>())) {
+    // if (ls[1] == 1) {
+    // node.left = ans(ls[0], mp);
+    // } else {
+    // node.right = ans(ls[0], mp);
+    // }
+    // }
+    // return node;
+    // }
+}
