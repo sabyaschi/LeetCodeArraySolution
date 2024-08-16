@@ -1,0 +1,16 @@
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        List<String> ls = new ArrayList<>();
+        int idx = 1;
+        for (int i : target) {
+            while (idx < i) {
+                ls.add("Push");
+                ls.add("Pop");
+                idx++;
+            }
+            ls.add("Push");
+            idx++;
+        }
+        return ls;
+    }
+}
